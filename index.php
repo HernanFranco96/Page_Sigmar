@@ -13,6 +13,11 @@
 	<title>Inicio</title>
 	<link rel="stylesheet" href="assets/style.css">
 	<style type="text/css" media="screen">
+		h1, p{
+			text-align: center;
+			margin: 100px auto;
+			color: black;
+		}
 		form{
 			width: 600px;
 			height: 100px;
@@ -63,8 +68,8 @@
  
 		 ?>
 		<form action="php/login.php" method="post">
-			<input class="texto" type="text" class="form-control" name="name" placeholder="Usuario">
-			<input class="texto" type="password" class="form-control" name="password" placeholder="Password">
+			<input class="texto" type="text" name="name" placeholder="Usuario">
+			<input class="texto" type="password" name="password" placeholder="Password">
 			<button type="submit" name="enviar" class="btn btn-default">Entrar</button>
 		</form>
 	</div>
