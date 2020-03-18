@@ -1,3 +1,10 @@
+<?php
+ 
+	if(isset($_GET["error"]) && $_GET["error"] != "login") {
+		header("Location: index.php");
+	}
+ 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +20,7 @@
 		}
 		form .texto{
 			width: 40%;
+			height: 20px;
 			padding: 12px;
 			margin: 10px 15px;
 			text-align: center;
@@ -26,7 +34,8 @@
 			background-color: rgba(0,0,0,.5);
 		}
 		form .btn{
-			width: 40%;
+			width: 30%;
+			height: 50px;
 			padding: 10px;
 			margin: 10px auto;
 			display: block;
@@ -44,10 +53,20 @@
 	</style>
 </head>
 <body>
-	<form action="#" method="post" accept-charset="utf-8">
-		<input class="texto" type="text" name="email" placeholder="Ingrese su e-mail">
-        <input class="texto" type="password" name="password" placeholder="Ingrese tu contraseña">
-        <input class="btn" type="submit" value="Aceptar">
-	</form>
+	<div class="login">
+		<h1>Login</h1>
+		<?php
+ 
+			if(isset($_GET["error"])) {
+				echo "<p class='error'>Usuario y / o Contrasea erroneos. Intentelo de nuevo.</p>";
+			}
+ 
+		 ?>
+		<form action="php/login.php" method="post">
+			<input class="texto" type="text" class="form-control" name="name" placeholder="Usuario">
+			<input class="texto" type="password" class="form-control" name="password" placeholder="Password">
+			<button type="submit" name="enviar" class="btn btn-default">Entrar</button>
+		</form>
+	</div>
 </body>
 </html>
