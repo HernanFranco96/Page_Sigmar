@@ -3,7 +3,6 @@
 	if(isset($_GET["error"]) && $_GET["error"] != "login") {
 		header("Location: index.php");
 	}
- 
  ?>
 <!DOCTYPE html>
 <html lang="en">

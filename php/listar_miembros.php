@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+	if($_SESSION["online"] == TRUE) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +16,7 @@
 		table{
 			width: 800px;
 			color: white;
-			margin: 100px auto;
+			margin: 30px auto;
 		}
 		table tr th{
 			background-color: rgba(0,0,0,.9);
@@ -35,7 +39,7 @@
 		form{
 			margin: auto;
 			text-align: center;
-			margin-top: -50px;
+			margin-top: 20px;
 		}
 		form button{
 			width: 12%;
@@ -51,6 +55,10 @@
 			cursor: pointer;
 			transition: 0.5s;
 			background-color: rgba(0,0,0,.5);
+		}
+		.formulario_mod{
+			display: block;
+			margin: 10px auto;
 		}
 	</style>
 </head>
@@ -102,9 +110,58 @@
 
 	if(isset($_POST['modificar']))
 	{
-		?>
-		
-		<?php
+		if(!empty($_POST['id']))
+		{
+			$id = $_POST['id'];
+			?>
+				<form class="formulario_mod" action="#" method="post" accept-charset="utf-8">
+					<span>Nombre nuevo</span>
+					<input class="texto" type="text" name="nombre">
+					<span>Rango nuevo</span>
+					<input class="texto" type="text" name="rango">
+					<span>Consejo nuevo</span>
+					<input class="texto" type="text" name="consejo">
+
+					<button class="btn" type="submit" name="aceptar">Aceptar</button>
+				</form>
+			<?php
+			if(isset($_POST['aceptar']))
+			{
+				if(!empty($_POST['nombre']) && !empty($_POST['rango']) && !empty($_POST['consejo']))
+				{
+
+					$consulta = "SELECT * FROM miembros WHERE id = '$id'";
+
+					foreach ($conection->query($consulta) as $value)
+					{
+						$userok = $value['id'];
+					}
+					if(isset($id))
+					{
+						if($id == $userok)
+						{
+							$insertar = "UPDATE miembros SET nombre = '$_POST[nombre]', rango = '$_POST[rango]', ,consejo = '$_POST[consejo]'";
+							if($conection->query($insertar))
+							{
+								echo "<h1>MODIFICADO CON EXITO</h1>";
+							}
+						}
+						else
+						{
+							echo "<h1>EL MIEMBRO NO EXISTE</h1>";
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			echo "<h2>SELECCIONE ID DE UN MIEMBRO</h2>";
+		}
+	}
+
+	} else {
+		header("Location: ../index.php");
 	}
 ?>
 </body>

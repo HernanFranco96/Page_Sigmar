@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+	if($_SESSION["online"] == TRUE) {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,6 +101,10 @@
 				}
 			}
 		}
+
+		} else {
+		header("Location: ../index.php");
+	}
 	?>
 </body>
 </html>
