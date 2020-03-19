@@ -6,8 +6,7 @@
 
     try
     {
-        $conection = new PDO("mysql:host=$host; dbname=$db", $user, $pass);
-        echo "<h1 class='mensajeServer'>Conectado a la base de datos</h1>";    
+        $conection = new PDO("mysql:host=$host; dbname=$db", $user, $pass);  
     }
     catch(PDOException $e)
     {

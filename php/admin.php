@@ -75,7 +75,7 @@
 			<nav>
 				<ul>
 					<li><a href="registrar_miembro.php">Registrar Miembro</a></li>
-					<li><a href="#">OPCION #2</a></li>
+					<li><a href="listar_miembros.php">Lista de miembros</a></li>
 					<li><a href="#">OPCION #3</a></li>
 					<li><a href="#">OPCION #4</a></li>
 					<li><a href="salir.php">Salir</a></li>
